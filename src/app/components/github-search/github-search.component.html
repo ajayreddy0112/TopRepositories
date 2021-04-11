@@ -1,1 +1,47 @@
-<p>github-search works!</p>
+<div class="container">
+    <div class="search-bar my-4 row justify-content-center">
+        <div class="d-flex flex-row bd-highlight">
+            <input class="form-control search-input" type="text" placeholder="Search Repositories...." #inputSearch>
+            <button (click)="onSearch(inputSearch.value)" type="submit" class="btn btn-primary ml-4">Search</button>
+        </div>
+    </div>
+    <div *ngIf="!loader" >
+        <div *ngIf="repoData?.items.length" class="">
+            <div class="total-result">
+                <span class="item-count">{{repoData?.total_count}} </span> results found...
+            </div>
+            <div class="row justify-content-center">
+                <div *ngFor="let data of repoData.items" class="col-lg-5 col-sm-8 my-3 mx-4 github-data"
+                    (click)="navigateToRepo(data.html_url)">
+                    <div class="row">
+                        <div class="col-3 p-3">
+                            <img class="owner-avatar" [src]="data?.owner?.avatar_url" />
+                        </div>
+                        <div class="col-9 repo-data">
+                            <div class="repo-name p-1">{{data?.name}}</div>
+                            <div class="owner p-1">Owner: {{data?.owner?.login}}</div>
+                            <div class="fork-count p-1">Fork Count: {{data?.forks}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+        <div *ngIf="!repoData?.items.length" class="no-result pt-4">
+            NO RESULT FOUND...
+        </div>
+        <div *ngIf="repoData?.total_count > 20" class="d-flex flex-row bd-highlight my-4 pagination justify-content-center align-items-center">
+            <button [disabled] = "!backwardButton" (click)="pageBackward()" type="button" class="btn btn-primary">Prev Page</button>
+            <div class="page-no mx-4">{{pageCount}}</div>
+            <button [disabled] = "!forwardButton" (click)="pageForward()" type="button" class="btn btn-primary">Next Page</button>
+        
+        </div>
+    </div>
+    
+
+    <div *ngIf="loader" class="d-flex flex-row justify-content-center align-items-center loader">
+        <div class="spinner-border">
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,68 @@
+.container {
+    .search-bar{
+        .search-input{
+            width: 50vw;
+        }
+    }
+    .total-result {
+        text-align: center;
+        color: rgb(152, 151, 151);
+        font-size: 20px;
+        .item-count {
+            font-weight: bold;
+            color: white;
+            margin-right: 6px;
+        }
+    }
+
+    .no-result {
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        height: 100vh;
+    }
+
+    .github-data {
+        cursor: pointer;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border-radius: 20px;
+        box-shadow: 0px 3px 10px #4342421a;
+        min-height: 20vh;
+        display: flex;
+        align-items: center;
+        .owner-avatar {
+            width: 100%;
+            border-radius: 50%;
+        }
+        .repo-data {
+            .repo-name {
+                font-size: 20px;
+                font-weight: bold;
+            }
+            // .owner, .fork-count {
+            //     font-weight: bold;
+            // }
+        }
+    }
+
+    .page-no{
+        color: white;
+    }
+
+    .loader {
+        height: 100vh;
+        .spinner-border {
+            display: inline-block;
+            width: 2rem;
+            height: 2rem;
+            vertical-align: text-bottom;
+            border: .25em solid white;
+            border-right-color: transparent;
+            border-radius: 50%;
+            -webkit-animation: .75s linear infinite spinner-border;
+            animation: .75s linear infinite spinner-border;
+        }
+    }
+    
+
+}
